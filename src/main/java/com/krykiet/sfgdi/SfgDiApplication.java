@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = {"com.krykiet.sfgdi", "other.krykiet.pets"})
+//@ComponentScan(basePackages = {"com.krykiet.sfgdi", "other.krykiet.pets"})
 @SpringBootApplication
 public class SfgDiApplication {
 
