@@ -23,3 +23,7 @@ krykiet:
   username: YmlJokeUserName
   password: YmlJokePassword
   jdbcurl: YmlJokeUrl
+megakrykiet:
+  username: YmlMegaUserName
+  password: YmlMegPassword
+  jdbcurl: YmlMegaUrl
