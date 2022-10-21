@@ -1,7 +1,25 @@
 spring:
   profiles:
-    active: dog, EN
+    active:
+      -  dog
+      -  EN
+      -  joke
 krykiet:
   username: YmlUserName
   password: YmlPassword
   jdbcurl: YmlUrl
+
+---
+spring:
+  profiles: prod
+krykiet:
+  username: YmlProdUserName
+  password: YmlProdPassword
+  jdbcurl: YmlProdUrl
+---
+spring:
+  profiles: joke
+krykiet:
+  username: YmlJokeUserName
+  password: YmlJokePassword
+  jdbcurl: YmlJokeUrl
