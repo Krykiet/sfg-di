@@ -1,10 +1,15 @@
 package com.krykiet.sfgdi;
 
 import com.krykiet.sfgdi.controllers.*;
+import com.krykiet.sfgdi.datasource.FakeDataSource;
+import com.krykiet.sfgdi.services.PrototypeBean;
+import com.krykiet.sfgdi.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+
+import java.sql.SQLOutput;
 
 //@ComponentScan(basePackages = {"com.krykiet.sfgdi", "other.krykiet.pets"})
 @SpringBootApplication
@@ -37,6 +42,25 @@ public class SfgDiApplication {
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
 		// Calling method from ConstructorInjectedController
 		System.out.println(constructorInjectedController.getGreeting());
+
+		System.out.println("---------Bean Scopes ----------");
+		// Singleton bean is created during Component Scan at the beginning, annotated as @Component
+		SingletonBean singletonBean1 = ctx.getBean(SingletonBean.class);
+		System.out.println(singletonBean1.getMyScope());
+		SingletonBean singletonBean2 = ctx.getBean(SingletonBean.class);
+		System.out.println(singletonBean2.getMyScope());
+		//Prototype bean is created whenever it is referenced, @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+		PrototypeBean prototypeBean1 = ctx.getBean(PrototypeBean.class);
+		System.out.println(prototypeBean1.getMyScope());
+		PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
+		System.out.println(prototypeBean2.getMyScope());
+
+		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
+		System.out.println(fakeDataSource.getUsername());
+		System.out.println(fakeDataSource.getPassword());
+		System.out.println(fakeDataSource.getJdbcurl());
+
+
 	}
 
 }
